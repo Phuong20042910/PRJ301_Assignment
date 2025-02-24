@@ -63,10 +63,23 @@
     
     }
     .menu {
-        display: flex;
+/*        display: flex;
         list-style: none;
         gap: 2rem;
         padding: 10px;
+        border-radius: 10px;
+        background-color: #495D5F;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);*/
+        display: flex;
+        list-style: none;
+        padding: 10px 0;
+        justify-content: center; /* Căn giữa menu theo chiều ngang */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        width: fit-content; /* Chỉ chiếm đúng kích thước nội dung */
+        max-width: 800px;
+        margin: 0 auto; /* Căn giữa theo chiều ngang */
+        margin-top: 100px;
+        margin-left: 225px;
         border-radius: 10px;
         background-color: #495D5F;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -92,12 +105,29 @@
     }
     
     .search-bar{
-        display: flex;
+/*        display: flex;
         align-items: center;
         background: #fff;
         border-radius: 20px;
         padding: 0 1rem;
-        margin-right: 50px;
+        margin-right: 100px;*/
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 20px;
+        padding: 0.5rem 1.8rem;
+        margin: auto;
+        margin-top: 40px;
+        margin-bottom: 0;
+        margin-left: 15px;
+        position: fixed; /* Fix the search bar at the top */
+        top: 10px; /* Adjust top position as needed */
+        left: 50%;
+        transform: translateX(-50%); /* Centers the search bar horizontally */
+        z-index: 1; /* Ensures search bar stays on top of the header */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a shadow effect to separate from the header */
+        justify-content: space-between; /* Aligns input on the left and button on the right */
+        width: 660px; /* Adjust width as needed */
     }
     
     .search-input {
@@ -129,11 +159,28 @@
         right: 0;
     }
     .login img {
-        display: flex;
+        display: fixed;
         width: 50px;
         height: 50px;
     }
     
+    .cart {
+        display: flex;
+        border: black;
+        background: white;
+        cursor: pointer;
+        border-radius: 25px;
+        position: absolute;
+        right: 0;
+        margin-right: 70px;
+        
+    }
+    
+    .cart img {
+        display: fixed;
+        width: 50px;
+        height: 50px;
+    }
 </style>
 
 <header class="header">
@@ -150,10 +197,14 @@
             <button class="login">
                 <img src="image/user-interface.png" alt="Login Image"/>
             </button>
+            
+            <button class="cart">
+                <img src="image/Cart_Game.jpeg" alt="Cart Game">
+            </button>
             <ul class="menu">
                 <li class="menu-item"><a href="#">Trang Chủ</a></li>
                 <li class="menu-item"><a href="#">Sản phẩm</a></li>
-                <li class="menu-item"><a href="#">Giỏ hàng</a></li>
+                <li class="menu-item"><a href="#">Thể loại</a></li>
                 <li class="menu-item"><a href="#">Liên hệ</a></li>
             </ul>
 

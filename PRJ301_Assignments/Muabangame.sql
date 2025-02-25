@@ -2,25 +2,25 @@ Create database Muabangame_com;
 Use Muabangame_com
 CREATE TABLE tblGames (
     game_id      INT PRIMARY KEY IDENTITY(1,1),
-    title        NVARCHAR(255) NOT NULL,
+    title        VARCHAR(255) NOT NULL,
     price        DECIMAL(10,2) NOT NULL CHECK (price >= 0),
     release_date DATE,
-    genre        NVARCHAR(100),
-    platform     NVARCHAR(100),
+    genre        VARCHAR(100),
+    platform     VARCHAR(100),
     stock        INT DEFAULT 0 CHECK (stock >= 0),
-    image_url    NVARCHAR(255),
+    image_url    VARCHAR(255),
     created_at   DATETIME DEFAULT GETDATE(),
     updated_at   DATETIME DEFAULT GETDATE()
 );
 
 Create table tblUsers(
 	User_id int primary key identity(1,1),
-	Username NVARCHAR(255) not null unique,
+	Username VARCHAR(255) not null unique,
 	Password varchar(255) not null,
-	Email NVARCHAR(255) not null unique,
-	Phone NVARCHAR(20),
-	Address NVARCHAR(255),
-	Role NVARCHAR(20) DEFAULT 'Customer' CHECK(Role IN('Customer', 'Admin')),
+	Email VARCHAR(255) not null unique,
+	Phone VARCHAR(20),
+	Address VARCHAR(255),
+	Role VARCHAR(20) DEFAULT 'Customer' CHECK(Role IN('Customer', 'Admin')),
 	Created_at DATETIME DEFAULT GETDATE()
 );
 
@@ -28,7 +28,7 @@ CREATE TABLE tblOrders(
 	Order_id int primary key identity(1,1),
 	User_id int not null,
 	Total_price decimal(10,2) not null CHECK(total_price >= 0),
-	Status NVARCHAR(50) DEFAULT 'pending' CHECK(Status IN('pending','processing','completed','canceled')),
+	Status VARCHAR(50) DEFAULT 'pending' CHECK(Status IN('pending','processing','completed','canceled')),
 	Created_at datetime DEFAULT GETDATE(),
 	Update_at datetime DEFAULT GETDATE(),
 	FOREIGN KEY(User_id) REFERENCES tblUsers(User_id)
@@ -50,8 +50,8 @@ CREATE TABLE tblPayments (
     Order_id    INT NOT NULL,
     User_id     INT NOT NULL,
     Amount      DECIMAL(10,2) NOT NULL CHECK (amount >= 0),
-    Method      NVARCHAR(50) NOT NULL CHECK (method IN ('credit_card', 'paypal', 'bank_transfer')),
-    Status      NVARCHAR(50) DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
+    Method      VARCHAR(50) NOT NULL CHECK (method IN ('credit_card', 'paypal', 'bank_transfer')),
+    Status      VARCHAR(50) DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed')),
     Created_at  DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (Order_id) REFERENCES tblOrders(Order_id),
     FOREIGN KEY (User_id) REFERENCES tblUsers(User_id)
@@ -62,7 +62,7 @@ CREATE TABLE tblReviews (
     Game_id    INT NOT NULL,
     User_id    INT NOT NULL,
     Rating     INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
-    Comment    NVARCHAR(1000),
+    Comment    VARCHAR(1000),
     Created_at DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (Game_id) REFERENCES tblGames(Game_id),
     FOREIGN KEY (User_id) REFERENCES tblUsers(User_id)

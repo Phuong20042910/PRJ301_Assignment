@@ -1,5 +1,5 @@
-Create database Muabangame_com;
-Use Muabangame_com
+Create database DataWebgame;
+Use DataWebgame
 CREATE TABLE tblGames (
     game_id      INT PRIMARY KEY IDENTITY(1,1),
     title        VARCHAR(255) NOT NULL,
